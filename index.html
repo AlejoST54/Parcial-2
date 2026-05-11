@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuiteMax</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<h2>Bienvenidos a SuiteMax</h2>
+<hr>
+
+<div class="contenedor">
+
+    <h3>Formulario de Reserva</h3>
+    <form action="javascript:crearReserva();">
+
+        <div class="fila">
+            <div class="campo">
+                <label for="codigoReservaId">Código de Reserva:</label>
+                <input type="text" id="codigoReservaId" placeholder="Ej: RES-001">
+            </div>
+            <div class="campo">
+                <label for="nombreHuespedId">Nombre del Huésped:</label>
+                <input type="text" id="nombreHuespedId" placeholder="Nombre completo">
+            </div>
+        </div>
+
+        <div class="fila">
+            <div class="campo">
+                <label for="documentoId">Documento:</label>
+                <input type="text" id="documentoId" placeholder="Número de documento">
+            </div>
+            <div class="campo">
+                <label for="nochesId">Número de Noches:</label>
+                <input type="number" id="nochesId" placeholder="Ej: 3">
+            </div>
+        </div>
+
+        <div class="fila">
+            <div class="campo">
+                <label for="tarifaNocheId">Tarifa por Noche ($):</label>
+                <input type="number" id="tarifaNocheId" placeholder="Ej: 80000">
+            </div>
+            <div class="campo">
+                <label for="tipoHabitacionId">Tipo de Habitación:</label>
+                <select id="tipoHabitacionId" onchange="cambiarTipo()">
+                    <option value="E">E - Estándar (+$50.000)</option>
+                    <option value="D">D - Deluxe (+$120.000)</option>
+                    <option value="S">S - Suite (+$250.000)</option>
+                    <option value="P">P - Presidencial (+$500.000)</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="campoDesayuno">
+            <label>
+                <input type="checkbox" id="desayunoId"> ¿Incluye desayuno?
+            </label>
+        </div>
+
+        <div id="campoVistaAlMar" style="display:none;">
+            <label>
+                <input type="checkbox" id="vistaAlMarId"> ¿Vista al mar?
+            </label>
+        </div>
+
+        <button type="submit" class="btn-primary">Crear Reserva</button>
+
+    </form>
+
+    <hr>
+
+    <!-- TABLA DE RESERVAS -->
+    <h3>Reservas Registradas</h3>
+    <table id="tablaReservas">
+        <tbody>
+            <tr>
+                <th>No.</th>
+                <th>Código Reserva</th>
+                <th>Nombre Huésped</th>
+                <th>Documento</th>
+                <th>Noches</th>
+                <th>Tarifa/Noche</th>
+                <th>Tipo Habitación</th>
+                <th>Desayuno Incluido</th>
+                <th>Vista al Mar</th>
+                <th>Valor Estadía</th>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="total">
+        <h4>Total Facturado del Mes: <span id="totalMensualId">$0</span></h4>
+    </div>
+
+</div>
+
+<script src="model/Reserva.js"></script>
+<script src="model/Estandar.js"></script>
+<script src="model/Suite.js"></script>
+<script src="controller/main.js"></script>
+
+<script>
+    mostrarReservas();
+</script>
+
+</body>
+</html>
